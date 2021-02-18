@@ -38,3 +38,20 @@ collections:
           - { label: "Key", name: "key", widget: "string" }
           - { label: "Order", name: "order", widget: "number", default: 0 }
       - { label: "Body", name: "body", widget: "markdown" }
+
+working directory: ~/repo
+
+steps:
+  - checkout
+
+  - run:
+      name: install dependencies
+      command: |
+        npm install
+        npm install @percy/cli --save-dev
+
+  - run:
+    name: run tests
+    command: |
+        npm run build
+        percy snapshot _site
