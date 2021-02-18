@@ -4,14 +4,19 @@
   "description": "A boilerplate for building a fast static website with the Eleventy static site generator, for deployment to Netlify.",
   "scripts": {
     "build": "npx eleventy",
+    "percy": "percysnapshot _site",
     "watch": "npx eleventy --watch",
     "debug": "DEBUG=* npx eleventy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danurbanowicz/eleventy-netlify-boilerplate.git"
+    "url": "https://github.com/danurbanowicz/eleventy-netlify-boilerplate"
   },
-  "author": "Dan Urbanowicz <dan.urbanowicz@gmail.com> (https://www.danurbanowicz.com/)",
+  "author": {
+    "name": "Dan Urbanowicz",
+    "email": "dan.urbanowicz@gmail.com",
+    "url": "https://www.danurbanowicz.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/danurbanowicz/eleventy-netlify-boilerplate/issues"
@@ -28,7 +33,51 @@
     "clean-css": "^4.2.1",
     "html-minifier": "^4.0.0",
     "uglify-es": "^3.3.9"
+  }
+}
+
+{
+  // ...
+    "percy": {
+    "version": 2,
+    "snapshot": {
+      "widths": [
+        375,
+        1280
+      ],
+      "min-height": 1024,
+      "percy-css": "iframe { display: none; }",
+      "authorization": {
+        "username": "user",
+        "password": "pass"
+      },
+      "request-headers": {
+        "Authorization": "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+      }
+    },
+    "discovery": {
+      "allowed-hostnames": [
+        "cdn.example.com"
+      ],
+      "network-idle-timeout": 150,
+      "concurrency": 20,
+      "disable-cache": false,
+      "launch-options": {
+        "executable": "/path/to/chromium/executable",
+        "headless": true,
+        "args": [],
+        "timeout": 30000
+      }
+    },
+    "static": {
+      "base-url": "/",
+      "files": "**/*.html",
+      "ignore": "**/*.htm"
+    },
+    "upload": {
+      "files": "**/*.{png,jpg,jpeg}",
+      "ignore": ""
+    }
   },
-  "main": ".eleventy.js",
-  "keywords": []
+  // ...
 }
