@@ -7,7 +7,8 @@ eleventyNavigation:
   key: Home
   order: 0
 ---
-# Welcome..!
+# Welcome!
+>>>>>>> 26e3b2e049b96f7d3741523d1bff583ffc1e3577
 
 This is a template for building a simple blog website with the [Eleventy static site generator](https://www.11ty.io), with deployment to [Netlify](https://www.netlify.com).
 
